@@ -28,12 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            textBoxName = new TextBox();
+            textBoxPrice = new TextBox();
+            buttonCreateProduct = new Button();
+            SuspendLayout();
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(123, 38);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(100, 23);
+            textBoxName.TabIndex = 0;
+            // 
+            // textBoxPrice
+            // 
+            textBoxPrice.Location = new Point(123, 67);
+            textBoxPrice.Name = "textBoxPrice";
+            textBoxPrice.Size = new Size(100, 23);
+            textBoxPrice.TabIndex = 1;
+            // 
+            // buttonCreateProduct
+            // 
+            buttonCreateProduct.Location = new Point(148, 96);
+            buttonCreateProduct.Name = "buttonCreateProduct";
+            buttonCreateProduct.Size = new Size(75, 23);
+            buttonCreateProduct.TabIndex = 2;
+            buttonCreateProduct.Text = "Ürün Ekle";
+            buttonCreateProduct.UseVisualStyleBackColor = true;
+            buttonCreateProduct.Click += buttonCreateProduct_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(324, 184);
+            Controls.Add(buttonCreateProduct);
+            Controls.Add(textBoxPrice);
+            Controls.Add(textBoxName);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox textBoxName;
+        private TextBox textBoxPrice;
+        private Button buttonCreateProduct;
     }
 }

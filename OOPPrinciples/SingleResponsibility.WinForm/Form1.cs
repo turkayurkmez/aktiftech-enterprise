@@ -6,5 +6,21 @@ namespace SingleResponsibility.WinForm
         {
             InitializeComponent();
         }
+
+        private void buttonCreateProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        int CreateProduct(string name, decimal price)
+        {
+            return 1;
+        }
+
+
+        void SendMailToVendor(string vendorEmail)
+        {
+            MessageBox.Show("Eposta gönderildi");
+        }
     }
 }
