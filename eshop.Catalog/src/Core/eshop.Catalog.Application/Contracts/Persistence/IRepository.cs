@@ -2,7 +2,7 @@
 
 namespace eshop.Catalog.Application.Contracts.Persistence
 {
-    public interface IRepository<T> where T : IEntity, new()
+    public interface IRepository<T> where T : IEntity
     {
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);

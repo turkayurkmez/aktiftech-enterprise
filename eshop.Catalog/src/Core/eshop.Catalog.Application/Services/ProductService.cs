@@ -16,16 +16,26 @@ namespace eshop.Catalog.Application.Services
             this.productRepository = productRepository;
             this.mapper = mapper;
         }
+
         public async Task<int> CreateProduct(CreateProductRequest createProductRequest)
         {
+            //var product = new Product
+            //{
+            //    Name = createProductRequest.Name,
+            //    Description = createProductRequest.Description,
+            //    CategoryId = createProductRequest.CategoryId,
+            //    Price = createProductRequest.Price
+            //};
             var product = mapper.Map<Product>(createProductRequest);
             await productRepository.CreateAsync(product);
             return product.Id;
         }
 
-        public Task<IEnumerable<ProductSummaryResponse>> GetProductSummaries()
+        public async Task<IEnumerable<ProductSummaryResponse>> GetProductSummaries()
         {
-            throw new NotImplementedException();
+            var products = await productRepository.GetAsync();
+            var productSummaries = mapper.Map<IEnumerable<ProductSummaryResponse>>(products);
+            return productSummaries;
         }
 
         public Task<int> UpdateProduct(UpdateProductRequest updateProductRequest)
