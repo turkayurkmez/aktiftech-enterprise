@@ -13,7 +13,7 @@ builder.Services.AddMassTransit(config =>
     config.AddConsumer<StockReservedEventConsumer>();
     config.UsingRabbitMq((context, configurator) =>
     {
-        configurator.Host("localhost", "/", host =>
+        configurator.Host("rabbitmq", "/", host =>
         {
             host.Username("guest");
             host.Password("guest");

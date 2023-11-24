@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    ports:
+     - "5673:5672" 
+     - "15673:15672" 
+    
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    environment: 
+      host: "rabbitmq"
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Basket.API/Dockerfile
+
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    environment: 
+      host: "rabbitmq"
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
+
+
+  order.api:
+    image: ${DOCKER_REGISTRY-}orderapi
+    environment: 
+      host: "rabbitmq" 
+    build:
+      context: .
+      dockerfile: Order.API/Dockerfile
+
+
+  payment.api:
+    image: ${DOCKER_REGISTRY-}paymentapi
+    environment: 
+      host: "rabbitmq"
+    build:
+      context: .
+      dockerfile: src/Services/Payment/Payment.API/Dockerfile
+
+
+  stock.api:
+    image: ${DOCKER_REGISTRY-}stockapi
+    environment: 
+      host: "rabbitmq"
+    build:
+      context: .
+      dockerfile: src/Services/Stock/Stock.API/Dockerfile
+
