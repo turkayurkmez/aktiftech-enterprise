@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eshop.Catalog.Persistence.Repositories
 {
-    public class EFRepository<T> : IRepository<T> where T : IEntity
+    public class EFRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
-
         protected readonly CatalogDbContext catalogDbContext;
 
         public EFRepository(CatalogDbContext catalogDbContext)
@@ -29,17 +28,21 @@ namespace eshop.Catalog.Persistence.Repositories
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            return await catalogDbContext.Set<T>().AsN.ToListAsync();
+            return await catalogDbContext.Set<T>().AsNoTracking().ToListAsync();
+
+
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await catalogDbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            catalogDbContext.Update(entity);
+            catalogDbContext.Entry(entity).State = EntityState.Modified;
+            await catalogDbContext.SaveChangesAsync();
         }
     }
 }

@@ -29,5 +29,22 @@ namespace eshop.Catalog.Persistence.DbContexts
                               });
             return base.SaveChangesAsync(cancellationToken);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                Id = 1,
+                Name = "Şnorkel",
+                DateCreated = DateTime.Now,
+                DateModified = DateTime.Now,
+                Price = 500,
+                Description = "Deniz..."
+
+            });
+
+            modelBuilder.Entity<Product>().Property(product => product.Name).IsRequired()
+                                                                            .HasMaxLength(70);
+
+        }
     }
 }

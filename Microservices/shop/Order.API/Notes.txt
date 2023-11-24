@@ -1,0 +1,13 @@
+﻿
+Bir Microservice mesajlaşması:
+
+  1. Sipariş Ekleme Olayı fırlar
+  2. Stock yeterli mi değil mi kontrol edilir. 
+     2.a: Yeterli ise stock rezerve edilir olayı fırlar
+     2.b: Yetersiz ise stock rezerve edilmez olayı fırlar. 
+  3. Payment API'si StockReserve olayını yakalar ve Ödeme almaya çalışır.
+     3.a: Ödeme yapılır.. PaymentCompleted olayı fırlar
+     3.b: Ödeme gerçekleşmez: PaymentFailed fırlar.
+  4. Orders API'si PaymentCompleted olayını yakalar ve db'de işlem tamamlanır.
+  5. Orders API'si PaymentFailed olayını yakalar ve db'de sebebi ile birlikte sipariş iptal edilir.
+  6. Orders API'si StockNotReserved olayını yakalar....

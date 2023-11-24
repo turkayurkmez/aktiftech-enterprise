@@ -1,5 +1,6 @@
 ﻿using eshop.Catalog.Application.DataTransferObjects.Requests;
 using eshop.Catalog.Application.DataTransferObjects.Responses;
+using eshop.Catalog.Application.Features.ProductFeature.Queries.GetAllProducts;
 
 namespace eshop.Catalog.Application.Services
 {

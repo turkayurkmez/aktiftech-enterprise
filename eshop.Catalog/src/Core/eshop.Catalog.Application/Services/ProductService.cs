@@ -2,6 +2,7 @@
 using eshop.Catalog.Application.Contracts.Persistence;
 using eshop.Catalog.Application.DataTransferObjects.Requests;
 using eshop.Catalog.Application.DataTransferObjects.Responses;
+using eshop.Catalog.Application.Features.ProductFeature.Queries.GetAllProducts;
 using eshop.Catalog.Domain;
 
 namespace eshop.Catalog.Application.Services
@@ -42,5 +43,7 @@ namespace eshop.Catalog.Application.Services
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

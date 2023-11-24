@@ -18,8 +18,4 @@
     <ProjectReference Include="..\eshop.Catalog.Domain\eshop.Catalog.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\ProductFeature\Queries\" />
-  </ItemGroup>
-
 </Project>
